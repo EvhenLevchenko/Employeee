@@ -25,11 +25,11 @@ public class Company implements Serializable {
 
 
     @Column(name = "size", nullable = false, length = 5)
-    private int size;
+    private Integer size;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Singular
-    private List<Department> departments;
+    private List<Departament> departaments;
 
 
 }

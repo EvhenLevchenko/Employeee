@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @Builder(toBuilder = true)
 @ToString
-public class Department {
+public class Departament {
     @Id
     @GeneratedValue
     private long id;

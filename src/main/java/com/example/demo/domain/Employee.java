@@ -29,7 +29,7 @@ public class Employee implements Serializable {
             joinColumns = {@JoinColumn(name = "employee_id")},
             inverseJoinColumns = {@JoinColumn(name = "departament_id")})
     @Singular
-    private List<Department> departments;
+    private List<Departament> departaments;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "employee_car",
