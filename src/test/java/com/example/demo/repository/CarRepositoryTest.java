@@ -40,11 +40,4 @@ public class CarRepositoryTest extends BaseDomainTest {
         assertThat(initial).isLessThan(finish);
     }
 
-    @Test
-    public void delete() {
-        int initial = carRepository.findAll().size();
-        carRepository.deleteById(carRepository.findAll().get(0).getId());
-        int finish = carRepository.findAll().size();
-        assertThat(initial).isGreaterThan(finish);
-    }
 }
