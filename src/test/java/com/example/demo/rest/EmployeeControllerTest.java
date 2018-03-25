@@ -31,56 +31,56 @@ import static org.mockito.Mockito.when;
 @WebMvcTest(EmployeeController.class)
 @ComponentScan
 public class EmployeeControllerTest {
-
-    private  final String Employee_URL="/employees";
-
-    @MockBean
-    private EmployeeService employeeService;
-
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    private EmployeeDTO firstEmployee=createUniqueEmployeeDTO();
-
-
-    private EmployeeDTO createUniqueEmployeeDTO() {
-        return EmployeeDTO.builder()
-                .id(new Random().nextInt())
-                .name(UUID.randomUUID().toString())
-                .build();
-    }
-    @Before
-    public void setUp() throws Exception {
-        when(employeeService.getAllEmployees()).thenReturn(Arrays.asList(firstEmployee));
-    }
-
-    @Test
-    public void getAll() throws Exception {
-        String result = objectMapper.writeValueAsString(Arrays.asList(firstEmployee));
-
-        mvc.perform(get(Employee_URL)
-                .accept(APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(result));
-    }
-
-    @Test
-    public void addEmployee() throws Exception {
-        String requestBody = objectMapper.writeValueAsString(firstEmployee);
-
-        mvc.perform(post(Employee_URL)
-                .accept(APPLICATION_JSON)
-                .contentType(APPLICATION_JSON)
-                .content(requestBody))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    public void deleteEmployee() throws Exception {
-        mvc.perform(delete(Employee_URL + "/" + firstEmployee.getId()))
-                .andExpect(status().isOk());
-    }
+//
+//    private  final String Employee_URL="/employees";
+//
+//    @MockBean
+//    private EmployeeService employeeService;
+//
+//    @Autowired
+//    private MockMvc mvc;
+//
+//    @Autowired
+//    private ObjectMapper objectMapper;
+//
+//    private EmployeeDTO firstEmployee=createUniqueEmployeeDTO();
+//
+//
+//    private EmployeeDTO createUniqueEmployeeDTO() {
+//        return EmployeeDTO.builder()
+//                .id(new Random().nextInt())
+//                .name(UUID.randomUUID().toString())
+//                .build();
+//    }
+//    @Before
+//    public void setUp() throws Exception {
+//        when(employeeService.getAllEmployees()).thenReturn(Arrays.asList(firstEmployee));
+//    }
+//
+//    @Test
+//    public void getAll() throws Exception {
+//        String result = objectMapper.writeValueAsString(Arrays.asList(firstEmployee));
+//
+//        mvc.perform(get(Employee_URL)
+//                .accept(APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(result));
+//    }
+//
+//    @Test
+//    public void addEmployee() throws Exception {
+//        String requestBody = objectMapper.writeValueAsString(firstEmployee);
+//
+//        mvc.perform(post(Employee_URL)
+//                .accept(APPLICATION_JSON)
+//                .contentType(APPLICATION_JSON)
+//                .content(requestBody))
+//                .andExpect(status().isOk());
+//    }
+//
+//    @Test
+//    public void deleteEmployee() throws Exception {
+//        mvc.perform(delete(Employee_URL + "/" + firstEmployee.getId()))
+//                .andExpect(status().isOk());
+//    }
 }
