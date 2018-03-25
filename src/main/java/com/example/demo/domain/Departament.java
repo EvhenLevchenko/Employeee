@@ -22,11 +22,11 @@ public class Departament  implements Serializable{
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToMany(mappedBy = "departaments", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "departaments", cascade = CascadeType.ALL)
     @Singular
     private Set<Employee> employees;
 }

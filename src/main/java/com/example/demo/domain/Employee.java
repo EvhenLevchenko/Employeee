@@ -24,14 +24,14 @@ public class Employee implements Serializable {
     @Column(name = "name", nullable = false, length = 30)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})//Lazy при загрузке сущности PERM не загружает кол-ю сразу а только при данном обращении к ней
     @JoinTable(name = "employee_departament",
             joinColumns = {@JoinColumn(name = "employeeId")},
-            inverseJoinColumns = {@JoinColumn(name = "departamentId")})
+            inverseJoinColumns = {@JoinColumn(name = "departamentId")})//TODO add referencesColumnName. Warning exception create bean?
     @Singular
     private Set<Departament> departaments;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinTable(name = "employee_car",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))

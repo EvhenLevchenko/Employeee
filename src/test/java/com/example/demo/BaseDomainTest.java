@@ -19,24 +19,24 @@ public abstract class BaseDomainTest {
     private EntityManager entityManager;
 
     @Before
-    public void setUp()throws Exception{
-        Employee employee=Employee.builder()
+    public void setUp() throws Exception {
+        Employee employee = Employee.builder()
                 .name("Bob")
                 .car(Car.builder()
-                .model("model")
-                .build())
+                        .model("model")
+                        .build())
                 .build();
-        Company company=Company.builder()
+        Company company = Company.builder()
                 .name("Company")
                 .size(4555)
                 .build();
-        Departament departament=Departament.builder()
+        Departament departament = Departament.builder()
                 .name("Departament")
                 .build();
-        
+
         entityManager.persist(employee);
         entityManager.persist(company);
         entityManager.persist(departament);
-        entityManager.flush();
+        entityManager.flush();//сенхронизирует контекст с бд
     }
 }
