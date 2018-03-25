@@ -6,9 +6,10 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "employee", schema = "", catalog = "relationship")
+@Table(name = "employee")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,16 +26,16 @@ public class Employee implements Serializable {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinTable(name = "employee_and_departament",
-            joinColumns = {@JoinColumn(name = "employee_id")},
-            inverseJoinColumns = {@JoinColumn(name = "departament_id")})
+    @JoinTable(name = "employee_departament",
+            joinColumns = {@JoinColumn(name = "employeeId")},
+            inverseJoinColumns = {@JoinColumn(name = "departamentId")})
     @Singular
-    private List<Departament> departaments;
+    private Set<Departament> departaments;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.ALL})
     @JoinTable(name = "employee_car",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
     @Singular
-    private List<Car> cars;
+    private Set<Car> cars;
 }

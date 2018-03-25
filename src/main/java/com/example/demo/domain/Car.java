@@ -5,9 +5,10 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "employee", schema = "", catalog = "relationship")
+@Table(name = "car")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,17 +23,14 @@ public class Car implements Serializable {
     private long id;
 
     @Column(name = "year", nullable = false, length = 4)
-    private Integer year;
+    private int year;
 
     @Column(name = "model", nullable = false, length = 20)
     private String model;
 
 
-    @ManyToMany
-    @JoinTable(name = "employee_car",
-            joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id"))
+    @ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Singular
-    private List<Employee> employeers;
+    private Set<Employee> employees;
 
 }

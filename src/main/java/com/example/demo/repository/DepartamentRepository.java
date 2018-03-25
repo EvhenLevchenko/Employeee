@@ -1,4 +1,9 @@
 package com.example.demo.repository;
 
-public interface DepartamentRepository {
+import com.example.demo.domain.Departament;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DepartamentRepository extends JpaRepository<Departament, Long> {
+    Departament getDepartamentById(long id);
+    Departament getDepartamentByName(String name);
 }

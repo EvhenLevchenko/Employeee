@@ -3,17 +3,19 @@ package com.example.demo.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "departament",schema = "", catalog = "relationship")
+@Table(name = "departament")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder(toBuilder = true)
 @ToString
-public class Departament {
+public class Departament  implements Serializable{
     @Id
     @GeneratedValue
     private long id;
@@ -25,7 +27,7 @@ public class Departament {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToMany(mappedBy = "divisions", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "departaments", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Singular
-    private List<Employee> employees;
+    private Set<Employee> employees;
 }

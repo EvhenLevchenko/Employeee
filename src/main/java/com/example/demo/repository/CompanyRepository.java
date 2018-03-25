@@ -1,4 +1,9 @@
 package com.example.demo.repository;
 
-public interface CompanyRepository {
+import com.example.demo.domain.Company;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CompanyRepository extends JpaRepository<Company,Long>{
+    Company getCompanyById(long id);
+    Company getCompanyByName(String name);
 }

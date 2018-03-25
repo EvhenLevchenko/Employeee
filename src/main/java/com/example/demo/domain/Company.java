@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "company",schema = "", catalog = "relationship")
+@Table(name = "company")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -25,7 +25,7 @@ public class Company implements Serializable {
 
 
     @Column(name = "size", nullable = false, length = 5)
-    private Integer size;
+    private int size;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Singular

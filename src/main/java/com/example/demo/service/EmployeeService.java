@@ -19,11 +19,8 @@ import java.util.stream.Collectors;
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
-    private DepartamentRepository departamentRepository;
-    private CarRepository carRepository;
 
-
-    public List<EmployeeDTO> getAll() {
+    public List<EmployeeDTO> getAllEmployees() {
         return employeeRepository.findAll().stream()
                 .map(EmployeeDTO::fromEmployee)
                 .collect(Collectors.toList());
@@ -40,4 +37,18 @@ public class EmployeeService {
         return EmployeeDTO.fromEmployee(employee);
     }
 
+    @Transactional
+    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+        Employee employee = employeeRepository.getOne(employeeDTO.getId());
+        employeeRepository.saveAndFlush(employee);
+        return EmployeeDTO.fromEmployee(employee);
+    }
+
+    public EmployeeDTO getEmployeeId(long employeeId) {
+        return EmployeeDTO.fromEmployee(employeeRepository.getEmployeeById(employeeId));
+    }
+
+    public EmployeeDTO getByEmployeeName(String employeeName) {
+        return EmployeeDTO.fromEmployee(employeeRepository.getEmployeeByName(employeeName));
+    }
 }
