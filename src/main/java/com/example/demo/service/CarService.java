@@ -42,7 +42,7 @@ public class CarService {
         return CarDTO.fromCar(car);
     }
 
-    public CarDTO getEmployeeId(long carId) {
+    public CarDTO getCarId(long carId) {
         return CarDTO.fromCar(carRepository.getCarById(carId));
     }
 

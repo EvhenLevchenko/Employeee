@@ -4,17 +4,15 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "car")
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder(toBuilder = true)
 @Setter
-@EqualsAndHashCode
 @ToString
 public class Car implements Serializable {
 

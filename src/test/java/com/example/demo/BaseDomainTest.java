@@ -22,11 +22,21 @@ public abstract class BaseDomainTest {
     public void setUp()throws Exception{
         Employee employee=Employee.builder()
                 .name("Bob")
-                .build();
-        Car car= Car.builder()
+                .car(Car.builder()
                 .model("model")
-                .year(2000)
+                .build())
                 .build();
+        Company company=Company.builder()
+                .name("Company")
+                .size(4555)
+                .build();
+        Departament departament=Departament.builder()
+                .name("Departament")
+                .build();
+        
         entityManager.persist(employee);
+        entityManager.persist(company);
+        entityManager.persist(departament);
+        entityManager.flush();
     }
 }
