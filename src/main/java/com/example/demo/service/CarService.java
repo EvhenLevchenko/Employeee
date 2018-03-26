@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CarService {
 
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
 
     public List<CarDTO> getAllCars() {
         return carRepository.findAll().stream()

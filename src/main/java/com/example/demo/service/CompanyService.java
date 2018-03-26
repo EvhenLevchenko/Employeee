@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CompanyService {
-    private CompanyRepository companyRepository;
+    private final CompanyRepository companyRepository;
 
     public List<CompanyDTO> getAllCompany() {
         return companyRepository.findAll().stream()

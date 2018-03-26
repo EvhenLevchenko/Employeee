@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    private  final EmployeeRepository employeeRepository;
 
     public List<EmployeeDTO> getAllEmployees() {
         return employeeRepository.findAll().stream()

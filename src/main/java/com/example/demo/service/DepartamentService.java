@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class DepartamentService {
 
 
-    private DepartamentRepository departamentRepository;
+    private final DepartamentRepository departamentRepository;
 
     public List<DepartamentDTO> getAllDepartaments() {
         return departamentRepository.findAll().stream()
