@@ -9,7 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DepartamenRepositoryTest extends BaseDomainTest {
-
     @Autowired
     private DepartamentRepository departamentRepository;
 
