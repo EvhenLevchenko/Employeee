@@ -20,7 +20,7 @@ public class EmployeeService {
 
     private  final EmployeeRepository employeeRepository;
 
-    public List<EmployeeDTO> getAllEmployees() {
+    public List<EmployeeDTO> getAll() {
         return employeeRepository.findAll().stream()
                 .map(EmployeeDTO::fromEmployee)
                 .collect(Collectors.toList());
@@ -32,13 +32,13 @@ public class EmployeeService {
     }
 
     @Transactional
-    public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
+    public EmployeeDTO add(EmployeeDTO employeeDTO) {
         Employee employee = employeeRepository.save(EmployeeDTO.fromEmployeeDTO(employeeDTO));
         return EmployeeDTO.fromEmployee(employee);
     }
 
     @Transactional
-    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+    public EmployeeDTO update(EmployeeDTO employeeDTO) {
         Employee employee = employeeRepository.getOne(employeeDTO.getId());
         employeeRepository.saveAndFlush(employee);
         return EmployeeDTO.fromEmployee(employee);

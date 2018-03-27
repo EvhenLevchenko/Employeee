@@ -5,9 +5,8 @@ import lombok.*;
 
 import java.io.Serializable;
 
-
+@ToString
 @Data
-
 @Getter
 @Builder(toBuilder = true)
 @AllArgsConstructor
@@ -15,8 +14,17 @@ import java.io.Serializable;
 public class CompanyDTO implements Serializable {
     private long id;
     private String name;
-    private Integer size;
+    private int size;
 
+
+
+    public static CompanyDTO fromCompany(Company company) {
+        return CompanyDTO.builder()
+                .id(company.getId())
+                .name(company.getName())
+                .size(company.getSize())
+                .build();
+    }
 
     public static Company fromCompanyDTO(CompanyDTO companyDTO) {
         return Company.builder()
@@ -24,14 +32,5 @@ public class CompanyDTO implements Serializable {
                 .name(companyDTO.getName())
                 .size(companyDTO.getSize())
                 .build();
-    }
-
-    public static CompanyDTO fromCompany(Company company) {
-        CompanyDTO companyDTO = CompanyDTO.builder()
-                .id(company.getId())
-                .name(company.getName())
-                .size(company.getSize())
-                .build();
-        return companyDTO;
     }
 }

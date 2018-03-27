@@ -17,25 +17,38 @@ public class CarController {
 
     private final CarService carService;
 
+
     @GetMapping
-    public List<CarDTO> getAll() {
+    public  List<CarDTO> getAll(){
         return carService.getAllCars();
     }
 
+//    @GetMapping
+//    public ResponseEntity<CarDTO> addCar(@RequestBody CarDTO carDTO) {
+//        CarDTO carDTO1 = carService.addCar(carDTO);
+//        return ResponseEntity.ok(carService.addCar(carDTO));//TODO  Error creating bean with name 'requestMappingHandlerMapping'
+//    }
+
     @PostMapping
-    public ResponseEntity<CarDTO> addCar(@RequestBody CarDTO carDTO) {
+    public ResponseEntity<CarDTO> add(@RequestBody CarDTO carDTO) {
         CarDTO carDTO1 = carService.addCar(carDTO);
         return ResponseEntity.ok(carDTO1);
     }
 
+    @PostMapping("/all")
+    public ResponseEntity<CarDTO> adds(@RequestBody List<CarDTO>  carDTOs) {
+        CarDTO carDTO1 = carService.addCar(carDTOs);
+        return ResponseEntity.ok(carDTO1);
+    }
+
     @PutMapping
-    public ResponseEntity<CarDTO> updateCar(@RequestBody CarDTO carDTO) {
+    public ResponseEntity<CarDTO> update(@RequestBody CarDTO carDTO) {
         CarDTO carDTO1 = carService.updateCar(carDTO);
         return ResponseEntity.ok(carDTO1);
     }
 
-    @DeleteMapping("/{car_id}")
-    public ResponseEntity<Void> deleteCar(@PathVariable(value = "car_id") long carId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable(value = "id") long carId) {
         try {
             carService.deleteCarById(carId);
             return ResponseEntity.ok().build();
@@ -44,8 +57,8 @@ public class CarController {
         }
     }
 
-    @GetMapping("/{car_id}")
-    public ResponseEntity<CarDTO> getEmployeeById(@PathVariable(value = "car_id") long carId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<CarDTO> getCarById(@PathVariable(value = "id") long carId) {
         return ResponseEntity.ok(carService.getCarId(carId));
     }
 

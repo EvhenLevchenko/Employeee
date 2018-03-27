@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class CarDTO implements Serializable {
     private long id;
-    private Integer year;
+    private int year;
     private String model;
 
     public static Car fromCarDTO(CarDTO carDTO) {
@@ -24,11 +24,10 @@ public class CarDTO implements Serializable {
     }
 
     public static CarDTO fromCar(Car car) {
-        CarDTO carDTO = CarDTO.builder()
+        return CarDTO.builder()
                 .id(car.getId())
                 .year(car.getYear())
                 .model(car.getModel())
                 .build();
-        return carDTO;
     }
 }

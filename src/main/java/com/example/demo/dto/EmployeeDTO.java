@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 
-
+@ToString
 @Data
 @Getter
 @Builder(toBuilder = true)
@@ -24,11 +24,11 @@ public class EmployeeDTO implements Serializable {
     }
 
     public static EmployeeDTO fromEmployee(Employee employee) {
-        EmployeeDTO employeeDTO = EmployeeDTO.builder()
+        return EmployeeDTO.builder()
                 .id(employee.getId())
                 .name(employee.getName())
                 .build();
-        return employeeDTO;
+
     }
 }
 

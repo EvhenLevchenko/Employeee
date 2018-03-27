@@ -18,23 +18,23 @@ public class DepartamentController {
 
     @GetMapping
     public List<DepartamentDTO> getAll() {
-        return departamentService.getAllDepartaments();
+        return departamentService.getAll();
     }
 
     @PostMapping
-    public ResponseEntity<DepartamentDTO> addDepartament(@RequestBody DepartamentDTO departamentDTO) {
-        DepartamentDTO departamentDTO1 = departamentService.addDepartament(departamentDTO);
+    public ResponseEntity<DepartamentDTO> add(@RequestBody DepartamentDTO departamentDTO) {
+        DepartamentDTO departamentDTO1 = departamentService.add(departamentDTO);
         return ResponseEntity.ok(departamentDTO1);
     }
 
     @PutMapping
-    public ResponseEntity<DepartamentDTO> updateDepartament(@RequestBody DepartamentDTO departamentDTO) {
-        DepartamentDTO departamentDTO1 = departamentService.updateDepartament(departamentDTO);
+    public ResponseEntity<DepartamentDTO> update(@RequestBody DepartamentDTO departamentDTO) {
+        DepartamentDTO departamentDTO1 = departamentService.update(departamentDTO);
         return ResponseEntity.ok(departamentDTO1);
     }
 
     @DeleteMapping("/{departament_id}")
-    public ResponseEntity<Void> deleteDepartament(@PathVariable(value = "departament_id") long departamentId) {
+    public ResponseEntity<Void> delete(@PathVariable(value = "departament_id") long departamentId) {
         try {
             departamentService.deleteDepartamentById(departamentId);
             return ResponseEntity.ok().build();

@@ -11,21 +11,21 @@ public class EmployeeServiceTest extends BaseDomainTest{
 
     @Test
     public void add(){
-        int initial=  employeeService.getAllEmployees().size();
-        employeeService.addEmployee(EmployeeDTO.builder().name("Bob").build());
-        int finish = employeeService.getAllEmployees().size();
+        int initial=  employeeService.getAll().size();
+        employeeService.add(EmployeeDTO.builder().name("Bob").build());
+        int finish = employeeService.getAll().size();
         assertThat(initial).isLessThan(finish);
     }
 
     @Test
     public void getById() {
-        EmployeeDTO employeeDTO = employeeService.getEmployeeId(employeeService.getAllEmployees().get(0).getId());
+        EmployeeDTO employeeDTO = employeeService.getEmployeeId(employeeService.getAll().get(0).getId());
         assertThat(employeeDTO).isNotNull();
     }
 
     @Test
     public void getAll() {
-        assertThat(employeeService.getAllEmployees()).hasSize(1);
+        assertThat(employeeService.getAll()).hasSize(1);
     }
 
     @Test
@@ -36,9 +36,9 @@ public class EmployeeServiceTest extends BaseDomainTest{
 
     @Test
     public void delete() {
-        int initial = employeeService.getAllEmployees().size();
-        employeeService.deleteEmployeeById(employeeService.getAllEmployees().get(0).getId());
-        int finish = employeeService.getAllEmployees().size();
+        int initial = employeeService.getAll().size();
+        employeeService.deleteEmployeeById(employeeService.getAll().get(0).getId());
+        int finish = employeeService.getAll().size();
         assertThat(initial).isGreaterThan(finish);
     }
 }

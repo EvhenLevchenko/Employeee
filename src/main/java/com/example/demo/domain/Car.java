@@ -6,13 +6,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+@Setter
 @Entity
 @Table(name = "car")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Builder(toBuilder = true)
-@Setter
 @ToString
 public class Car implements Serializable {
 

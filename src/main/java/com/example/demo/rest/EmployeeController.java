@@ -19,23 +19,23 @@ public class EmployeeController {
 
     @GetMapping
     public List<EmployeeDTO> getAll() {
-        return employeeService.getAllEmployees();
+        return employeeService.getAll();
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeDTO> addEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        EmployeeDTO employeeDTO1 = employeeService.addEmployee(employeeDTO);
+    public ResponseEntity<EmployeeDTO> add(@RequestBody EmployeeDTO employeeDTO) {
+        EmployeeDTO employeeDTO1 = employeeService.add(employeeDTO);
         return ResponseEntity.ok(employeeDTO1);
     }
 
     @PutMapping
-    public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        EmployeeDTO employeeDTO1 = employeeService.updateEmployee(employeeDTO);
+    public ResponseEntity<EmployeeDTO> update(@RequestBody EmployeeDTO employeeDTO) {
+        EmployeeDTO employeeDTO1 = employeeService.update(employeeDTO);
         return ResponseEntity.ok(employeeDTO1);
     }
 
     @DeleteMapping("/{employee_id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable(value = "employee_id") long employeeId) {
+    public ResponseEntity<Void> delete(@PathVariable(value = "employee_id") long employeeId) {
         try {
             employeeService.deleteEmployeeById(employeeId);
             return ResponseEntity.ok().build();

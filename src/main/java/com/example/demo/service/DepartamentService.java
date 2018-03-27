@@ -19,7 +19,7 @@ public class DepartamentService {
 
     private final DepartamentRepository departamentRepository;
 
-    public List<DepartamentDTO> getAllDepartaments() {
+    public List<DepartamentDTO> getAll() {
         return departamentRepository.findAll().stream()
                 .map(DepartamentDTO::fromDepartament)
                 .collect(Collectors.toList());
@@ -31,13 +31,13 @@ public class DepartamentService {
     }
 
     @Transactional
-    public DepartamentDTO addDepartament(DepartamentDTO departamentDTO) {
+    public DepartamentDTO add(DepartamentDTO departamentDTO) {
         Departament departament = departamentRepository.save(DepartamentDTO.fromDepartamentDTO(departamentDTO));
         return DepartamentDTO.fromDepartament(departament);
     }
 
     @Transactional
-    public DepartamentDTO updateDepartament(DepartamentDTO departamentDTO) {
+    public DepartamentDTO update(DepartamentDTO departamentDTO) {
         Departament departament = departamentRepository.getOne(departamentDTO.getId());
         departamentRepository.saveAndFlush(departament);
         return DepartamentDTO.fromDepartament(departament);

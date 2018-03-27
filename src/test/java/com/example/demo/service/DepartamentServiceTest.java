@@ -12,21 +12,21 @@ public class DepartamentServiceTest extends BaseDomainTest {
 
     @Test
     public void add(){
-        int initial=  departamentService.getAllDepartaments().size();
-        departamentService.addDepartament(DepartamentDTO.builder().name("Departament").build());
-        int finish = departamentService.getAllDepartaments().size();
+        int initial=  departamentService.getAll().size();
+        departamentService.add(DepartamentDTO.builder().name("Departament").build());
+        int finish = departamentService.getAll().size();
         assertThat(initial).isLessThan(finish);
     }
 
     @Test
     public void getById() {
-        DepartamentDTO departamentDTO = departamentService.getDepartamentId(departamentService.getAllDepartaments().get(0).getId());
+        DepartamentDTO departamentDTO = departamentService.getDepartamentId(departamentService.getAll().get(0).getId());
         assertThat(departamentDTO).isNotNull();
     }
 
     @Test
     public void getAll() {
-        assertThat(departamentService.getAllDepartaments()).hasSize(1);
+        assertThat(departamentService.getAll()).hasSize(1);
     }
 
     @Test
@@ -37,9 +37,9 @@ public class DepartamentServiceTest extends BaseDomainTest {
 
     @Test
     public void delete() {
-        int initial = departamentService.getAllDepartaments().size();
-        departamentService.deleteDepartamentById(departamentService.getAllDepartaments().get(0).getId());
-        int finish = departamentService.getAllDepartaments().size();
+        int initial = departamentService.getAll().size();
+        departamentService.deleteDepartamentById(departamentService.getAll().get(0).getId());
+        int finish = departamentService.getAll().size();
         assertThat(initial).isGreaterThan(finish);
     }
 }

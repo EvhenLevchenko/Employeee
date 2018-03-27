@@ -49,4 +49,9 @@ public class CarService {
     public CarDTO getByCarModel(String carModel) {
         return CarDTO.fromCar(carRepository.getCarByModel(carModel));
     }
+
+    @Transactional
+    public CarDTO addCar(List<CarDTO> carDTOs) {
+        return null;
+    }
 }

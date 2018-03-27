@@ -19,23 +19,23 @@ public class CompanyController {
 
     @GetMapping
     public List<CompanyDTO> getAll() {
-        return companyService.getAllCompany();
+        return companyService.getAll();
     }
 
     @PostMapping
-    public ResponseEntity<CompanyDTO> addCar(@RequestBody CompanyDTO companyDTO) {
-        CompanyDTO companyDTO1 = companyService.addCompany(companyDTO);
+    public ResponseEntity<CompanyDTO> add(@RequestBody CompanyDTO companyDTO) {
+        CompanyDTO companyDTO1 = companyService.add(companyDTO);
         return ResponseEntity.ok(companyDTO1);
     }
 
     @PutMapping
-    public ResponseEntity<CompanyDTO> updateCar(@RequestBody CompanyDTO companyDTO) {
-        CompanyDTO companyDTO1 = companyService.updateCompany(companyDTO);
+    public ResponseEntity<CompanyDTO> update(@RequestBody CompanyDTO companyDTO) {
+        CompanyDTO companyDTO1 = companyService.update(companyDTO);
         return ResponseEntity.ok(companyDTO1);
     }
 
-    @DeleteMapping("/{company_id}")
-    public ResponseEntity<Void> deleteCar(@PathVariable(value = "company_id") long companyId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable(value = "id") long companyId) {
         try {
             companyService.deleteCompanyById(companyId);
             return ResponseEntity.ok().build();
@@ -44,13 +44,13 @@ public class CompanyController {
         }
     }
 
-    @GetMapping("/{company_id}")
-    public ResponseEntity<CompanyDTO> getEmployeeById(@PathVariable(value = "company_id") long companyId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable(value = "id") long companyId) {
         return ResponseEntity.ok(companyService.getCompanyId(companyId));
     }
 
     @GetMapping("/{company_name}")
-    public ResponseEntity<CompanyDTO> getCarByModel(@PathVariable(value = "car_model") String companyName) {
+    public ResponseEntity<CompanyDTO> getCompanyByName(@PathVariable(value = "company_name") String companyName) {
         return ResponseEntity.ok(companyService.getByCompanyName(companyName));
     }
 }

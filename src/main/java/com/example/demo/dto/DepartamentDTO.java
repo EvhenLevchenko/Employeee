@@ -24,10 +24,9 @@ public class DepartamentDTO implements Serializable {
     }
 
     public static DepartamentDTO fromDepartament(Departament departament) {
-        DepartamentDTO departamentDTO = DepartamentDTO.builder()
+        return DepartamentDTO.builder()
                 .id(departament.getId())
                 .name(departament.getName())
                 .build();
-        return departamentDTO;
     }
 }

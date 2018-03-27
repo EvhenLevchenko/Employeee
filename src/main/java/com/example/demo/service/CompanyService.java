@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class CompanyService {
     private final CompanyRepository companyRepository;
 
-    public List<CompanyDTO> getAllCompany() {
+    public List<CompanyDTO> getAll() {
         return companyRepository.findAll().stream()
                 .map(CompanyDTO::fromCompany)
                 .collect(Collectors.toList());
@@ -29,13 +29,13 @@ public class CompanyService {
     }
 
     @Transactional
-    public CompanyDTO addCompany(CompanyDTO companyDTO) {
+    public CompanyDTO add(CompanyDTO companyDTO) {
         Company company = companyRepository.save(CompanyDTO.fromCompanyDTO(companyDTO));
         return CompanyDTO.fromCompany(company);
     }
 
     @Transactional
-    public CompanyDTO updateCompany(CompanyDTO companyDTO) {
+    public CompanyDTO update(CompanyDTO companyDTO) {
         Company company = companyRepository.getOne(companyDTO.getId());
         companyRepository.saveAndFlush(company);
         return CompanyDTO.fromCompany(company);

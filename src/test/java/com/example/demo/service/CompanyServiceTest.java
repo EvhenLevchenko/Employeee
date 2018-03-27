@@ -13,21 +13,21 @@ public class CompanyServiceTest  extends BaseDomainTest{
 
     @Test
     public void add(){
-        int initial=  companyService.getAllCompany().size();
-        companyService.addCompany(CompanyDTO.builder().name("Company").size(4555).build());
-        int finish = companyService.getAllCompany().size();
+        int initial=  companyService.getAll().size();
+        companyService.add(CompanyDTO.builder().name("Company").size(4555).build());
+        int finish = companyService.getAll().size();
         assertThat(initial).isLessThan(finish);
     }
 
     @Test
     public void getById() {
-        CompanyDTO companyDTO = companyService.getCompanyId(companyService.getAllCompany().get(0).getId());
+        CompanyDTO companyDTO = companyService.getCompanyId(companyService.getAll().get(0).getId());
         assertThat(companyDTO).isNotNull();
     }
 
     @Test
     public void getAll() {
-        assertThat(companyService.getAllCompany()).hasSize(1);
+        assertThat(companyService.getAll()).hasSize(1);
     }
 
     @Test
@@ -38,9 +38,9 @@ public class CompanyServiceTest  extends BaseDomainTest{
 
     @Test
     public void delete() {
-        int initial = companyService.getAllCompany().size();
-        companyService.deleteCompanyById(companyService.getAllCompany().get(0).getId());
-        int finish = companyService.getAllCompany().size();
+        int initial = companyService.getAll().size();
+        companyService.deleteCompanyById(companyService.getAll().get(0).getId());
+        int finish = companyService.getAll().size();
         assertThat(initial).isGreaterThan(finish);
     }
 }
