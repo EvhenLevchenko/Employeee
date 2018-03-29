@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(CarController.class)
 @ComponentScan
-public class CarControllerTest {
+public class CarControllerTest    {
 
     private final String CAR_URL = "/cars";
 
