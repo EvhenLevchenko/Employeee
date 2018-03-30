@@ -15,7 +15,6 @@ public class DepartamentDTO implements Serializable {
     private long id;
     private String name;
 
-
     public static Departament fromDepartamentDTO(DepartamentDTO departamentDTO) {
         return Departament.builder()
                 .id(departamentDTO.getId())

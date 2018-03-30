@@ -16,8 +16,6 @@ public class CompanyDTO implements Serializable {
     private String name;
     private int size;
 
-
-
     public static CompanyDTO fromCompany(Company company) {
         return CompanyDTO.builder()
                 .id(company.getId())

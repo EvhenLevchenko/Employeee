@@ -1,6 +1,9 @@
 package com.example.demo.rest;
 
 import com.example.demo.dto.EmployeeDTO;
+import com.example.demo.service.CarService;
+import com.example.demo.service.CompanyService;
+import com.example.demo.service.DepartamentService;
 import com.example.demo.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -35,13 +38,16 @@ public class EmployeeControllerTest  {
     private final String Employee_URL = "/employees";
 
     @MockBean
-    private CompanyController companyController;
+    private CompanyService companyService;
+
     @MockBean
-    private DepartamentController departamentController;
-    @MockBean
-    private CarController carController;
+    private DepartamentService departamentService;
+
     @MockBean
     private EmployeeService employeeService;
+
+    @MockBean
+    private CarService carService;
 
     @Autowired
     private MockMvc mvc;

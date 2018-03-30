@@ -26,7 +26,6 @@ public class Car implements Serializable {
     @Column(name = "model", nullable = false, length = 20)
     private String model;
 
-
     @ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Singular
     private Set<Employee> employees;

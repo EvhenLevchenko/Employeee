@@ -3,6 +3,9 @@ package com.example.demo.rest;
 
 import com.example.demo.dto.CarDTO;
 import com.example.demo.service.CarService;
+import com.example.demo.service.CompanyService;
+import com.example.demo.service.DepartamentService;
+import com.example.demo.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,13 +39,13 @@ public class CarControllerTest    {
 
 
     @MockBean
-    private CompanyController companyController;
+    private CompanyService companyService;
 
     @MockBean
-    private DepartamentController departamentController;
+    private DepartamentService departamentService;
 
     @MockBean
-    private EmployeeController employeeController;
+    private EmployeeService employeeService;
 
     @MockBean
     private CarService carService;

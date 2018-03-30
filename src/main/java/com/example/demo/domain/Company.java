@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+
 @Entity
 @Table(name = "company")
 @AllArgsConstructor
@@ -22,7 +23,6 @@ public class Company implements Serializable {
 
     @Column(name = "name", nullable = false, length = 20)
     private String name;
-
 
     @Column(name = "size", nullable = false, length = 5)
     private int size;

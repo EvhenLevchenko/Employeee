@@ -15,7 +15,6 @@ public class EmployeeDTO implements Serializable {
     private long id;
     private String name;
 
-
     public static Employee fromEmployeeDTO(EmployeeDTO employeeDTO) {
         return Employee.builder()
                 .id(employeeDTO.getId())
@@ -28,7 +27,6 @@ public class EmployeeDTO implements Serializable {
                 .id(employee.getId())
                 .name(employee.getName())
                 .build();
-
     }
 }
 
