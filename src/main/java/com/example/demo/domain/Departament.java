@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,11 +23,11 @@ public class Departament  implements Serializable{
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToMany(mappedBy = "departaments", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "departaments", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @Singular
-    private Set<Employee> employees;
+    private List<Employee> employees;
 }

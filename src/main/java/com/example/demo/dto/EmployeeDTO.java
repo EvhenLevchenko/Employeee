@@ -4,6 +4,8 @@ import com.example.demo.domain.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ToString
 @Data
@@ -14,6 +16,8 @@ import java.io.Serializable;
 public class EmployeeDTO implements Serializable {
     private long id;
     private String name;
+    @Singular
+    private List<String> departaments;
 
     public static Employee fromEmployeeDTO(EmployeeDTO employeeDTO) {
         return Employee.builder()
@@ -23,10 +27,14 @@ public class EmployeeDTO implements Serializable {
     }
 
     public static EmployeeDTO fromEmployee(Employee employee) {
-        return EmployeeDTO.builder()
+        EmployeeDTO employeeDTO = EmployeeDTO.builder()
                 .id(employee.getId())
                 .name(employee.getName())
+                .departaments(employee.getDepartaments().stream()
+                        .map(departament -> departament.getName())
+                        .collect(Collectors.toList()))
                 .build();
+        return employeeDTO;
     }
 }
 

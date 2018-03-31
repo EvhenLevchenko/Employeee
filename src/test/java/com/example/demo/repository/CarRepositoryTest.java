@@ -2,10 +2,16 @@ package com.example.demo.repository;
 
 import com.example.demo.BaseDomainTest;
 import com.example.demo.domain.Car;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 
@@ -13,6 +19,7 @@ public class CarRepositoryTest extends BaseDomainTest {
 
     @Autowired
     private CarRepository carRepository;
+
 
     @Test
     public void findAll() {
@@ -40,4 +47,11 @@ public class CarRepositoryTest extends BaseDomainTest {
         assertThat(initial).isLessThan(finish);
     }
 
+    @Test
+
+
+    public void testSimpleStuff() {
+        String name = "SpringPersistenceWithHibernate";
+        Assert.assertEquals("SpringPersistenceWithHibernate", name);
+    }
 }

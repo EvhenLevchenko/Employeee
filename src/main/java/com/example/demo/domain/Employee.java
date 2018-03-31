@@ -5,16 +5,16 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
-@Entity
 @Table(name = "employee")
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
+@Builder(toBuilder = true)
+@AllArgsConstructor
 @Setter
-@ToString
+@NoArgsConstructor
+@Entity
 public class Employee implements Serializable {
 
     @Id
@@ -24,17 +24,17 @@ public class Employee implements Serializable {
     @Column(name = "name", nullable = false, length = 30)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})//Lazy при загрузке сущности PERM не загружает кол-ю сразу а только при данном обращении к ней
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})//Lazy при загрузке сущности PERM не загружает кол-ю сразу а только при данном обращении к ней
     @JoinTable(name = "employee_departament",
             joinColumns = {@JoinColumn(name = "employeeId")},
             inverseJoinColumns = {@JoinColumn(name = "departamentId")})//TODO add referencesColumnName. Warning exception create bean?
     @Singular
-    private Set<Departament> departaments;
+    private List<Departament> departaments;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "employee_car",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
     @Singular
-    private Set<Car> cars;
+    private List<Car> cars;
 }

@@ -2,6 +2,7 @@ package com.example.demo.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import com.example.demo.BaseDomainTest;
 import com.example.demo.dto.CarDTO;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,11 +36,12 @@ public class CarServiceTest extends BaseDomainTest {
         assertThat(CarDTO).isNotNull();
     }
 
-//    @Test
-//    public void delete() {
-//        int initial = carService.getAllCars().size();
-//        carService.deleteCarById(carService.getAllCars().get(0).getId());
-//        int finish = carService.getAllCars().size();
-//        assertThat(initial).isGreaterThan(finish);
-//    }
+    @Test
+    @Ignore
+    public void delete() {
+        int initial = carService.getAllCars().size();
+        carService.deleteCarById(carService.getAllCars().get(0).getId());
+        int finish = carService.getAllCars().size();
+        assertThat(initial).isGreaterThan(finish);
+    }
 }
